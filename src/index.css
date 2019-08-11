@@ -1,6 +1,13 @@
 
 body {	font-family: Courier New;
-		background: linear-gradient(to right, #f0f9ff 0%,#cbebff 47%,#a1dbff 100%);}
+		margin:0;
+		padding:0;
+		background: linear-gradient(89deg, #FF5EDF 0%, #04C8DE 100%);
+	}
+
+	button {
+		cursor: pointer;
+	}
 
 /*/body {
   margin: 0;
