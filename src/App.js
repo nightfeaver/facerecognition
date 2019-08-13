@@ -25,13 +25,16 @@ const particlesOptions = {
   }
 }
 
+
+
 class App extends Component {
 
   constructor() {
     super();
     this.state = {
       input:'',
-      urlImage:''
+      urlImage:'',
+      box:{}
     }
   }
 
@@ -39,23 +42,26 @@ class App extends Component {
     this.setState({input: event.target.value})
   }
 
+  calculateFaceLocation = (data) => {
+    const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
+    const image = document.getElementById('inputimage');
+    console.log(image);
+    const height = Number(image.height);
+    const width = Number(image.width);
+    console.log(width,height)
+  }
+
   onButtonSubmit = () => {
     console.log('click');
     this.setState({urlImage: this.state.input})
     app.models.predict(
-      Clarifai.FACE_DETECT_MODEL,
-      this.state.input
+        Clarifai.FACE_DETECT_MODEL,
+        this.state.input
       )
-    .then(
-    function(response) {
-      console.log(response.outputs[0].data.regions[0].region_info.bounding_box)
-    },
-    function(err) {
-      // there was an error
-    }
-  );
+      .then(response => this.calculateFaceLocation(response))
+      .catch(err => console.log(err));
   }
-
+  
   render() {
     return (
       <div className="App">
