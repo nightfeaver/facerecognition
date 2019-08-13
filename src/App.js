@@ -35,7 +35,8 @@ class App extends Component {
     this.state = {
       input:'',
       urlImage:'',
-      box:{}
+      box:{},
+      route:'signin'
     }
   }
 
@@ -56,10 +57,16 @@ class App extends Component {
     }
   }
 
+  onRouteChange =(route) => {
+    this.setState({route:route})
+  }
+
   displayFaceBox = (box) => {
     this.setState({box: box})
     console.log(this.state)
   }
+
+
 
   onButtonSubmit = () => {
     this.setState({urlImage: this.state.input})
@@ -77,12 +84,17 @@ class App extends Component {
         <Particles className='particles'
           params={particlesOptions}
         />
-        <Navigation />
-        <SignIn />
-        <Logo />
-        <Rank />
-        <ImageLinkForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} />
-        <FaceRecognition box={this.state.box} urlImage={this.state.urlImage} />
+        <Navigation onRouteChange={this.onRouteChange}/>
+        { (this.state.route === 'signin')
+        ? <SignIn onRouteChange={this.onRouteChange} />
+        : 
+        <dir>
+          <Logo />
+          <Rank />
+          <ImageLinkForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} />
+          <FaceRecognition box={this.state.box} urlImage={this.state.urlImage} />
+        </dir>
+      }
       </div>
     );
   }
