@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Navigation from './components/Navigation/Navigation';
-import SignIn from './components/SignIn/SignIn';
+import Signin from './components/SignIn/SignIn';
 import Register from './components/Register/Register';
 import FaceRecognition from './components/FaceRecognition/FaceRecognition';
 import Logo from './components/Logo/Logo';
@@ -26,8 +26,6 @@ const particlesOptions = {
     size: {value: 3}
   }
 }
-
-
 
 class App extends Component {
 
@@ -101,7 +99,7 @@ class App extends Component {
             <FaceRecognition box={box} urlImage={imageURL} />
           </dir>
           : route === 'signin'
-          ? <SignIn onRouteChange={this.onRouteChange} />
+          ? <Signin onRouteChange={this.onRouteChange} />
           : <Register onRouteChange={this.onRouteChange} />
         }
       </div>
