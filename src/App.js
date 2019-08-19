@@ -57,8 +57,8 @@ class App extends Component {
         id:data.id,
         name: data.name,
         email:data.email,
-        entries: 0,
-        joined: new Date()
+        entries: data.entries,
+        joined: data.joined
       }
     })
 
@@ -131,7 +131,7 @@ class App extends Component {
             <Logo />
             <Rank name={this.state.user.name} entries={this.state.user.entries}/>
             <ImageLinkForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} />
-            <FaceRecognition box={box} urlImage={imageURL} />
+            <FaceRecognition box={box} imageURL={imageURL} />
           </dir>
           : route === 'signin'
           ? <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
