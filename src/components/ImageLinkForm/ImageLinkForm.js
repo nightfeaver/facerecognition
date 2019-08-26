@@ -5,7 +5,7 @@ const ImageLinkForm = ( {onInputChange, onButtonSubmit}) => {
 	return (
 		<div>
 			<p className='f3'>{
-				`https://beyouthful.net/wp-content/uploads/2019/03/Eva-Green.jpg`}
+				`Enter a link address to a jpeg image containing a face...`}
 			</p>
 			<div className='center'>
 				<div className='form center br3 pa4 shadow-5'>
